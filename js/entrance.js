@@ -1,3 +1,7 @@
+//---------------------------------------------------------------------------------------------------------------------//
+
+// ESENCIALES AL CARGAR LA PAGINA
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const dropdownButton = document.getElementById('dropdownButton');
     const dropdownContent = document.getElementById('dropdownContent');
@@ -20,7 +24,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         }
     });
+
+    actualizarHoraActual();
+    cargarVehiculosDelLocalStorage();
+    setInterval(actualizarHoraActual, 60000);
 });
+
+//---------------------------------------------------------------------------------------------------------------------//
+
+//FUNCION PARA ACTUALIZAR Y VISUALIZAR EL RELOJ
 
 function actualizarHoraActual() {
     const ahora = new Date();
@@ -29,40 +41,52 @@ function actualizarHoraActual() {
     const horaActual = `${horas}:${minutos}`;
     document.getElementById('horaActual').textContent = horaActual;
 }
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarHoraActual();
-    setInterval(actualizarHoraActual, 60000);
-});
 
+//---------------------------------------------------------------------------------------------------------------------//
 
+//INICIALIZACION DE LISTAS PARA LUEGO HACERLES PUSH AL LOCALSTORAGE
 
 let vehicles = []
 let slots = []
 
-for (let i = 1; i <= 100; i++) {
-    slots.push({ name: `A${i}`, available: true });
-}
+//---------------------------------------------------------------------------------------------------------------------//
+
+//FUNCIONES DE GUARDAR Y CARGAR DESDE EL LOCALSTORAGE
 
 function guardarVehiculosEnLocalStorage() {
     localStorage.setItem("vehicles", JSON.stringify(vehicles));
+    guardarSlotsEnLocalStorage();
 }
 
 function cargarVehiculosDelLocalStorage() {
     const vehiclesString = localStorage.getItem("vehicles");
     if (vehiclesString) {
-        users = JSON.parse(vehiclesString);
+        vehicles = JSON.parse(vehiclesString);
     } else {
         vehicles = [];
     }
+    slots = obtenerSlotsDesdeLocalStorage();
 }
 
 function guardarSlotsEnLocalStorage() {
     localStorage.setItem('slots', JSON.stringify(slots));
 }
+
 function obtenerSlotsDesdeLocalStorage() {
     const slotsData = localStorage.getItem('slots');
-    return slotsData ? JSON.parse(slotsData) : [];
+    if (slotsData) {
+        return JSON.parse(slotsData);
+    } else {
+        const initialSlots = Array.from({length: 50}, (_, i) => ({
+            name: `A${i + 1}`,
+            available: true
+        }));
+        localStorage.setItem('slots', JSON.stringify(initialSlots));
+        return initialSlots;
+    }
 }
+
+//---------------------------------------------------------------------------------------------------------------------//
 
 const registerEntranceBtn = document.getElementById("registerEntranceBtn");
 
@@ -75,12 +99,12 @@ function registerEntranceVehicles() {
     const modelInputEntrance = document.getElementById("modelInputEntrance");
     const hourInputEntrance = document.getElementById("hourInputEntrance");
     const slotInputEntrance = document.getElementById("slotInputEntrance");
-    const horaActual = document.getElementById("horaActual");
+    const horaActual = document.getElementById("horaActual").innerText;
     const dropdownButton = document.getElementById("dropdownButton");
 
     const expresionRegularVehiculo = /^[A-Za-z]{3}\d{3}$/;
     const expresionRegularHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
-    const expresionRegularSlot = /^A([1-9]|[1-9]\d|100)$/;
+    const expresionRegularSlot = /^A([1-9]|[1-9]\d|50)$/;
 
     const vehicleType = dropdownButton.textContent === 'Select Type' ? '' : dropdownButton.textContent;
 
@@ -99,23 +123,20 @@ function registerEntranceVehicles() {
     if (!expresionRegularHora.test(hourInputEntrance.value)) {
         return alert("Hora escrita en mal formato! (XX:XX)");
     }
-    if (hourInputEntrance.value !== horaActual.innerText) {
+    if (hourInputEntrance.value !== horaActual) {
         return alert("La hora no coincide con la hora actual!");
     }
     if (!expresionRegularSlot.test(slotInputEntrance.value)) {
-        return alert("El slot está escrito en un formato incorrecto! (A1-A100)");
+        return alert("El slot está escrito en un formato incorrecto! (A1-A50)");
     }
-    
+
+    const slotDisponible = slots.find(slot => slot.name === slotInputEntrance.value);
+
     if (!slotDisponible) {
         return alert("El slot no existe!");
     }
     if (!slotDisponible.available) {
         return alert("El slot ya ha sido ocupado!");
-    }
-
-    const validVehicleTypes = ['Carro', 'Moto', 'Camión'];
-    if (!validVehicleTypes.includes(vehicleType)) {
-        return alert("Tipo de vehículo seleccionado no es válido!");
     }
 
     const placaExistente = vehicles.find(vehicle => vehicle.plate === plateInputEntrance.value);
@@ -146,12 +167,24 @@ function registerEntranceVehicles() {
         exit_hour: "",
         price: price,
         type: vehicleType,
-        total_cost : 0 
+        total_cost: 0 
     };
+
     vehicles.push(newVehicle);
     slotDisponible.available = false;
-    guardarSlotsEnLocalStorage();
+
+    guardarVehiculosEnLocalStorage();
+
     alert("Entrada registrada exitosamente");
     console.log(vehicles);
-    guardarVehiculosEnLocalStorage();
+
+    plateInputEntrance.value = '';
+    modelInputEntrance.value = '';
+    hourInputEntrance.value = '';
+    slotInputEntrance.value = '';
+    dropdownButton.textContent = 'Select Type';
 }
+
+window.addEventListener('beforeunload', () => {
+    guardarVehiculosEnLocalStorage();
+});
