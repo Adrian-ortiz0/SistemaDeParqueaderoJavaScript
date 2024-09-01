@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <script defer src="/js/exit.js"></script>
     <title>Exit Section</title>
 </head>
 <body>
@@ -62,25 +63,20 @@
                         <input type="text" id="plateInputExit">
                     </div>
                     <div class="input-group">
-                        <label for="modelInputExit">Model:</label>
-                        <input type="text" id="modelInputExit">
-                    </div>                  
-                    <div class="input-group">
                         <label for="hourInputExit">Exit Hour:</label>
                         <input type="text" id="hourInputExit">
                     </div>                   
-                    <div class="input-group">
-                        <label for="slotInputExit">Slot:</label>
-                        <input type="text" id="slotInputExit">
-                    </div>
                     <div class="input-group-exit">
                         <h1>Cost:</h1>
-                        <h1>6000$</h1>
+                        <h1 id="exitCost">$</h1>
                     </div>
                 </div>
                 <div class="exitUtils">
-                    <button id="registerExitBtn">Enter</button>
-                    <h1>12:00</h1>
+                    <div class="buttonsExit">
+                        <button id="registerExitBtn">Enter</button>
+                        <button id="payToExit">Pay</button>
+                    </div>
+                    <h1 id="horaActual">12:00</h1>
                 </div>
             </section>
         </section>

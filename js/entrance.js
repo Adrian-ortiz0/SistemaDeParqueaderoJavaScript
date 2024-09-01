@@ -27,7 +27,7 @@ function actualizarHoraActual() {
     const horas = ahora.getHours().toString().padStart(2, '0');
     const minutos = ahora.getMinutes().toString().padStart(2, '0');
     const horaActual = `${horas}:${minutos}`;
-    document.getElementById('horaActualEntrance').textContent = horaActual;
+    document.getElementById('horaActual').textContent = horaActual;
 }
 document.addEventListener('DOMContentLoaded', () => {
     actualizarHoraActual();
@@ -36,7 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const registerEntranceBtn = document.getElementById("registerEntranceBtn");
+let vehicles = []
+let slots = []
+
+for (let i = 1; i <= 100; i++) {
+    slots.push({ name: `A${i}`, available: true });
+}
 
 function guardarVehiculosEnLocalStorage() {
     localStorage.setItem("vehicles", JSON.stringify(vehicles));
@@ -51,12 +56,15 @@ function cargarVehiculosDelLocalStorage() {
     }
 }
 
-let vehicles = []
-const slots = []
-
-for (let i = 1; i <= 100; i++) {
-    slots.push({ name: `A${i}`, available: true });
+function guardarSlotsEnLocalStorage() {
+    localStorage.setItem('slots', JSON.stringify(slots));
 }
+function obtenerSlotsDesdeLocalStorage() {
+    const slotsData = localStorage.getItem('slots');
+    return slotsData ? JSON.parse(slotsData) : [];
+}
+
+const registerEntranceBtn = document.getElementById("registerEntranceBtn");
 
 registerEntranceBtn.addEventListener("click", function(){
     registerEntranceVehicles()
@@ -67,10 +75,8 @@ function registerEntranceVehicles() {
     const modelInputEntrance = document.getElementById("modelInputEntrance");
     const hourInputEntrance = document.getElementById("hourInputEntrance");
     const slotInputEntrance = document.getElementById("slotInputEntrance");
-    const horaActualEntrance = document.getElementById("horaActualEntrance");
+    const horaActual = document.getElementById("horaActual");
     const dropdownButton = document.getElementById("dropdownButton");
-
-    const slotsDisponibles = slots.filter(slot => slot.available);
 
     const expresionRegularVehiculo = /^[A-Za-z]{3}\d{3}$/;
     const expresionRegularHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
@@ -93,14 +99,12 @@ function registerEntranceVehicles() {
     if (!expresionRegularHora.test(hourInputEntrance.value)) {
         return alert("Hora escrita en mal formato! (XX:XX)");
     }
-    if (hourInputEntrance.value !== horaActualEntrance.innerText) {
+    if (hourInputEntrance.value !== horaActual.innerText) {
         return alert("La hora no coincide con la hora actual!");
     }
     if (!expresionRegularSlot.test(slotInputEntrance.value)) {
         return alert("El slot está escrito en un formato incorrecto! (A1-A100)");
     }
-
-    const slotDisponible = slots.find(slot => slot.name === slotInputEntrance.value);
     
     if (!slotDisponible) {
         return alert("El slot no existe!");
@@ -141,10 +145,12 @@ function registerEntranceVehicles() {
         slot: slotInputEntrance.value,
         exit_hour: "",
         price: price,
-        type: vehicleType 
+        type: vehicleType,
+        total_cost : 0 
     };
     vehicles.push(newVehicle);
     slotDisponible.available = false;
+    guardarSlotsEnLocalStorage();
     alert("Entrada registrada exitosamente");
     console.log(vehicles);
     guardarVehiculosEnLocalStorage();
