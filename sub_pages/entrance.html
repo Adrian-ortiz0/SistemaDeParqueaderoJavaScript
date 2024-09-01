@@ -74,10 +74,21 @@
                         <label for="slotInputEntrance">Slot:</label>
                         <input type="text" id="slotInputEntrance">
                     </div>
+                    <div class="input-group">
+                        <label for="vehicleType">Type:</label>
+                        <div class="dropdown">
+                            <button class="dropdown-button" id="dropdownButton">Select Type</button>
+                            <div class="dropdown-content" id="dropdownContent">
+                                <a href="#" data-value="carro">Carro</a>
+                                <a href="#" data-value="moto">Moto</a>
+                                <a href="#" data-value="camion">Camión</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="entranceUtils">
                     <button id="registerEntranceBtn">Enter</button>
-                    <h1>12:00</h1>
+                    <h1 id="horaActualEntrance">12:00</h1>
                 </div>
             </section>
         </section>

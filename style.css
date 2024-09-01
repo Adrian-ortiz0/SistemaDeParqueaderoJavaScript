@@ -265,3 +265,50 @@ body{
     font-size: 40px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
+
+.dropdown {
+    position: relative;
+    width: 355px;
+}
+
+.dropdown-button {
+    background-color: #3d3d3d74;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 350px;
+    height: 35px;
+    text-align: left;
+    font-family: wayneLetra;
+}
+
+.dropdown-button:hover {
+    background-color: #3d3d3d;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #3d3d3d4a;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-family: wayneLetra;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #3d3d3d;
+}
