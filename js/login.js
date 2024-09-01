@@ -1,6 +1,6 @@
-const adminEmail = "1";
-const adminPassword = 1;
-//bruce@wayne.com
+const adminEmail = "bruce@wayne.com";
+const adminPassword = 123456;
+
 
 const adminEnterButton = document.getElementById("adminEnterButton")
 
