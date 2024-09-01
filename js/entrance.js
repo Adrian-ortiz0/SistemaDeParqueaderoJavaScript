@@ -167,7 +167,8 @@ function registerEntranceVehicles() {
         exit_hour: "",
         price: price,
         type: vehicleType,
-        total_cost: 0 
+        total_cost: 0,
+        member: false
     };
 
     vehicles.push(newVehicle);

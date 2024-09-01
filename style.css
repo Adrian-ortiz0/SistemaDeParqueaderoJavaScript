@@ -146,9 +146,11 @@ body{
     height: 600px;
     background-color: #3d3d3d4a;
 }
-#vehicleInfomationCategories {
+.vehicleInformationContainerTags{
     display: flex;
     flex-direction: row;
+    width: 70%;
+    background-color: #3d3d3d4a;
     width: 100%;
     justify-content: space-around;
     color: rgba(255, 255, 255, 0.624);
@@ -156,12 +158,52 @@ body{
     background-color: #3d3d3d2a;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+#vehicleInfomationCategories{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    background-color: #3d3d3d4a;
+    width: 100%;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.624);
+    font-family: wayneLetra;
+    background-color: #3d3d3d2a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .defaultVehiclesSlots{
     display: flex;
     width: 100px;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+.informationModuleContainer {
+    height: auto;
+    width: auto;
+    overflow-y: auto;
+    max-height: 520px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #3d3d3d;
+}
+
+
+.informationModuleContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.informationModuleContainer::-webkit-scrollbar-track {
+    background: #3d3d3d; 
+    border-radius: 10px;
+}
+
+.informationModuleContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.informationModuleContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 .informationModule{
     display: flex;
@@ -205,7 +247,7 @@ body{
 .input-group{
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    width: 550px;
 }
 .input-group-exit{
     display: flex;
