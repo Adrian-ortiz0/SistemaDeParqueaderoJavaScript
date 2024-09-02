@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="/images/icon.png" type="image/png">
-    <script defer src="/js/entrance.js"></script>
-    <title>Entrance System</title>
+    <script defer src="/js/registerMembers.js"></script>
+    <title>Register Members</title>
 </head>
 <body>
     <main class="homeMain">
@@ -62,26 +62,26 @@
         </aside>
         <section class="bigSection">
             <section class="homeSection1">
-                <h1>Entrance Register</h1>
+                <h1>Member Register</h1>
                 <img src="/images/subLogo.jpg" alt="" width="100px">
             </section>
             <section class="homeSection2">
                 <div class="entranceInputs">
                     <div class="input-group">
-                        <label for="plateInputEntrance">Plate:</label>
-                        <input type="text" id="plateInputEntrance">
+                        <label for="modelInputEntrance">Name:</label>
+                        <input type="text" id="nameInputMember">
+                    </div>  
+                    <div class="input-group">
+                        <label for="plateInputMember">Plate:</label>
+                        <input type="text" id="plateInputMember">
                     </div>
                     <div class="input-group">
-                        <label for="modelInputEntrance">Model:</label>
-                        <input type="text" id="modelInputEntrance">
-                    </div>                  
+                        <label for="modelInputMember">Model:</label>
+                        <input type="text" id="modelInputMember">
+                    </div>                                  
                     <div class="input-group">
-                        <label for="hourInputEntrance">Enter Hour:</label>
-                        <input type="text" id="hourInputEntrance">
-                    </div>                   
-                    <div class="input-group">
-                        <label for="slotInputEntrance">Slots <span style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">(A1-A50):</span></label>
-                        <input type="text" id="slotInputEntrance">
+                        <label for="slotInputMember">Slots <span style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">(A1-A50):</span></label>
+                        <input type="text" id="slotInputMember">
                     </div>
                     <div class="input-group">
                         <label for="vehicleType">Type:</label>
@@ -94,10 +94,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <label for="monthType">Month:</label>
+                        <div class="dropdown">
+                            <button class="dropdown-button" id="dropdownButtonMonth">Select Type</button>
+                            <div class="dropdown-content" id="dropdownContentMonth">
+                                <a href="#" data-value="carro"><span style="font-family: Arial, Helvetica, sans-serif;">3</span></a>
+                                <a href="#" data-value="moto"><span style="font-family: Arial, Helvetica, sans-serif;">6</span></a>
+                                <a href="#" data-value="camion"><span style="font-family: Arial, Helvetica, sans-serif;">12</span></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="entranceUtils">
-                    <button id="registerEntranceBtn">Enter</button>
-                    <h1 id="horaActual">12:00</h1>
+                    <button id="registerMemberBtn">Enter</button>
                 </div>
             </section>
         </section>

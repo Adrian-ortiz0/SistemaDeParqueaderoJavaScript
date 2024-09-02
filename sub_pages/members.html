@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <script defer src="/js/listVehicles.js"></script>
     <link rel="icon" href="/images/icon.png" type="image/png">
-    <title>Vehicle List</title>
+    <title>Members</title>
 </head>
 <body>
     <main class="homeMain">
@@ -62,35 +61,28 @@
         </aside>
         <section class="bigSection">
             <section class="homeSection1">
-                <h1>Vehicle Information</h1>
+                <h1>Vehicle Entry and Exit System</h1>
                 <img src="/images/subLogo.jpg" alt="" width="100px">
             </section>
             <section class="homeSection2">
-                <article class="vehicleInformationContainer">
-                    <div class="vehicleInformationContainerTags">
-                        <div id="vehicleInfomationCategories">
-                            <div class="defaultVehiclesSlots">
-                                <h2>Id</h2>
-                            </div>
-                            <div class="defaultVehiclesSlots">
-                                <h2>Plate</h2>
-                            </div>
-                            <div class="defaultVehiclesSlots">
-                                <h2>Model</h2>
-                            </div>
-                            <div class="defaultVehiclesSlots">
-                                <h2>Slot</h2>
-                            </div>
-                            <div class="defaultVehiclesSlots">
-                                <h2>Member</h2>
-                            </div>
-                        </div>
+                <div class="subOptionsHomeSection2">
+                    <div class="plantillaSection2">
+                        <a href="/sub_pages/registerMembers.html">
+                            <button class="section2Buttons">
+                                <img src="/images/registerMember.svg" alt="entrada" width="100px">
+                            </button>
+                        </a>
+                        <p>Register Members</p>
                     </div>
-                    <div class="informationModuleContainer" id="informationModuleContainer">
-                        <div class="informationModule" id="informationModule">
-                        </div>
-                    </div>
-                </article>
+                    <div class="plantillaSection2">
+                        <a href="/sub_pages/exit.html">
+                            <button class="section2Buttons">
+                                <img src="/images/memberList.svg" alt="salida" width="100px">
+                            </button>
+                        </a>  
+                        <p>See Members</p>
+                    </div> 
+                </div>
             </section>
         </section>
     </main>
