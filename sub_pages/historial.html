@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="/images/icon.png" type="image/png">
-    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="/js/history.js"></script>
+    <title>Vehicle History</title>
 </head>
 <body>
     <main class="homeMain">
@@ -53,28 +54,38 @@
         </aside>
         <section class="bigSection">
             <section class="homeSection1">
-                <h1>Vehicle Entry and Exit System</h1>
+                <h1>Vehicle History</h1>
                 <img src="/images/subLogo.jpg" alt="" width="100px">
             </section>
             <section class="homeSection2">
-                <div class="subOptionsHomeSection2">
-                    <div class="plantillaSection2">
-                        <a href="/sub_pages/entrance.html">
-                            <button class="section2Buttons">
-                                <img src="/images/entrada.svg" alt="entrada" width="100px">
-                            </button>
-                        </a>
-                        <p>Entrance</p>
+                <article class="vehicleInformationContainer">
+                    <div class="vehicleInformationContainerTags">
+                        <div id="vehicleInfomationCategories">
+                            <div class="defaultVehiclesSlots">
+                                <h2>Id</h2>
+                            </div>
+                            <div class="defaultVehiclesSlots">
+                                <h2>Plate</h2>
+                            </div>
+                            <div class="defaultVehiclesSlots">
+                                <h2>Model</h2>
+                            </div>
+                            <div class="defaultVehiclesSlots">
+                                <h2>Slot</h2>
+                            </div>
+                            <div class="defaultVehiclesSlots">
+                                <h2>Hora Entrada</h2>
+                            </div>
+                            <div class="defaultVehiclesSlots">
+                                <h2>Hora Salida</h2>
+                            </div>
+                        </div>
                     </div>
-                    <div class="plantillaSection2">
-                        <a href="/sub_pages/exit.html">
-                            <button class="section2Buttons">
-                                <img src="/images/salida.svg" alt="salida" width="100px">
-                            </button>
-                        </a>  
-                        <p>Exit</p>
-                    </div> 
-                </div>
+                    <div class="informationModuleContainer" id="informationModuleContainerHistory">
+                        <div class="informationModule" id="informationModuleHistory">
+                        </div>
+                    </div>
+                </article>
             </section>
         </section>
     </main>

@@ -1,5 +1,6 @@
 let vehicles = [];
 let slots = [];
+let historial = [];
 
 function actualizarHoraActual() {
     const ahora = new Date();
@@ -11,6 +12,7 @@ function actualizarHoraActual() {
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatos();
+    cargarHistorial();
     actualizarHoraActual();
     setInterval(actualizarHoraActual, 60000);
 });
@@ -41,6 +43,44 @@ function guardarSlotsEnLocalStorage() {
 function obtenerSlotsDesdeLocalStorage() {
     const slotsData = localStorage.getItem('slots');
     return slotsData ? JSON.parse(slotsData) : [];
+}
+
+function cargarHistorial() {
+    const historialString = localStorage.getItem("historial");
+    historial = historialString ? JSON.parse(historialString) : [];
+}
+
+function guardarHistorial() {
+    localStorage.setItem("historial", JSON.stringify(historial));
+}
+
+function actualizarHistorial() {
+    let cambiosRealizados = false;
+
+    vehicles.forEach(function(item) {
+        const entradaExistente = historial.find(entrada => entrada.plate === item.plate && entrada.entrada === item.entrance_hour);
+        
+        if (!entradaExistente) {
+            let entrada = {
+                plate: item.plate,
+                model: item.model,
+                slot: item.slot,
+                entrada: item.entrance_hour,
+                salida: item.exit_hour,
+                type: item.type,
+                date: new Date().toLocaleDateString()
+            };
+            historial.push(entrada);
+            cambiosRealizados = true;
+        } else if (item.exit_hour && entradaExistente.salida !== item.exit_hour) {
+            entradaExistente.salida = item.exit_hour;
+            cambiosRealizados = true;
+        }
+    });
+
+    if (cambiosRealizados) {
+        guardarHistorial();
+    }
 }
 
 const plateInputExit = document.getElementById("plateInputExit");
@@ -93,6 +133,8 @@ function registerExit() {
     console.log("Costo total:", totalCost);
     exitCost.innerText = `${totalCost}$`;
     console.log(vehiculoSaliendo);
+
+    actualizarHistorial();
 
     payToExit.addEventListener("click", finalizarSalida);
 }
