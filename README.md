@@ -1,54 +1,54 @@
 
 # Wayne Enterprises Parking App
 
-## FUNCIONALIDADES 📏
+## FUNCTIONALITIES 📏
 
-| Índice | Titulo          |
+| Índex  | Title           |
 | ------ | --------------- |
-| 1      | Instalación     |
-| 2      | Uso             |
-| 3      | Funcionalidades |
-| 4      | Contacto        |
+| 1      | Instalation     |
+| 2      | Usage           |
+| 3      | Functionalities |
+| 4      | Contact         |
 
-## Instalación 🔩
+## INSTALATION 🔩
 
-Para clonar y ejecutar este proyecto en tu entorno local, sigue estos pasos:
+To clone and run this project in your local environment, follow these steps:
 
 ```
 git clone https://github.com/Adrian-ortiz0/Proyecto_JavaScript_Ustariz_Adrian.git
 ```
 
-Luego localiza el proyecto
+Then locate the project.
 
 ```
 cd Proyecto_JavaScript_Ustariz_Adrian
 ```
 
-Luego ejecútalo en VS Code
+Then run it in VS Code.
 
 ```
 code .
 ```
 
-## Uso ⚙
+## Usage ⚙
 
-Para poder dar inicio al software de parqueadero, lo primero que se debe hacer es ejecutar el index.html desde dentro de tu editor de código.
+To start the parking lot software, the first thing you need to do is run the index.html file from within your code editor.
 
 ### Login
 
-Al abrir el software, lo primero que se verá es una pagina de inicio de sesión.
+When you open the software, the first thing you'll see is a login page.
 
 ![ssLogin](/images/ssLogin.PNG)
 
-Para poder ingresar deberá digitarse bruce@wayne.com en la sección email, y la contraseña es "123456"
+To log in, enter `bruce@wayne.com` in the email section, and the password is "123456".
 
 ### Home
 
-Luego apareceremos en la sección de Home, en la cual se podrá observar esta interfaz
+Then you'll be taken to the Home section, where you can see this interface.
 
 ![ssHome](/images/ssHome.PNG)
 
-El botón entrance permitirá registrar a los vehículos que van entrando al parqueadero y el botón de exit permitirá registrar la salida de los vehículos que abandonan el establecimiento luego de cierto periodo de tiempo.
+The "Entrance" button will allow you to register vehicles entering the parking lot, and the "Exit" button will allow you to record the departure of vehicles leaving the premises after a certain period of time.
 
 #### Entrance
 
@@ -60,60 +60,60 @@ El botón entrance permitirá registrar a los vehículos que van entrando al par
 
 ### Lista de vehículos
 
-El siguiente botón el cual esta señalado en la imagen, redireccionará al administrador a la pagina encargada de mostrar los vehículos que actualmente están en el parqueadero.
+The next button, which is indicated in the image, will redirect the administrator to the page that displays the vehicles currently in the parking lot.
 
 ![ssList](/images/ssList.PNG)
 
 ### Slots
 
-El siguiente botón, el cual también esta señalado en la imagen, redirige al administrador a un apartado el cual le permitirá revisar de forma visual los slots que están disponibles y los que no.
+The next button, also highlighted in the image, will redirect the administrator to a section where they can visually review the available and unavailable slots.
 
 ![ssSlots](/images/ssSlots.PNG)
 
 ### History
 
-El siguiente botón, muestra al administrados el historial total de todos los autos que han entrado y salido.
+The next button shows the administrator the complete history of all cars that have entered and exited.
 
 ![ssHistory](/images/ssHistory.PNG)
 
 ### Members
 
-El botón de members da las opciones de registrar miembros y de verlos.
+The "Members" button provides options to register new members and view existing ones.
 
 ![ssMembers](/images/ssMembers.PNG)
 
-## Funcionalidades 📏
+## Functionalities 📏
 
-1. Registrar entrada de vehículos: placa, tipo, hora de entrada y espacio ocupado por el vehículo.
-2. Mostrar una lista de todos los vehículos dentro del parqueadero.
-3. Actualizar hora de salida del vehículo.
-4. Elimina el registro de un vehículo cuando salga del parqueadero.
-5. Se creara un pequeño login que de entrada del usuario al sistema.
-6. Se implementará el sistema de mensualidades y anualidades, este también tendrá distintos precios dependiendo de el tipo de vehículo.
-7. Los autos con estas membresías no se les cobrará el ingreso ni la salida, por lo tanto, tendrán un atributo especial pera ser identificados.
+1. Register vehicle entry: license plate, type, entry time, and space occupied by the vehicle.
+2. Display a list of all vehicles currently in the parking lot.
+3. Update the vehicle's exit time.
+4. Delete the record of a vehicle when it leaves the parking lot.
+5. A small login system will be created to grant user access to the system.
+6. A system for monthly and annual memberships will be implemented, with different prices depending on the type of vehicle.
+7. Vehicles with these memberships will not be charged for entry or exit, and will have a special attribute for identification.
 
-## Calculo de costo 💲
+## Cost Calculation 💲
 
-El costo se calculará según la permanencia del vehículo y el tipo de vehículo (motos, autos y camiones deben costar diferente).
+The cost will be calculated based on the vehicle's duration of stay and its type (motorcycles, cars, and trucks will have different rates).
 
-## Validación de datos 👁
+## Data Validation 👁
 
-1. Validar la placa con formato ABC-123 y ABC-12D.
-2. Validar espacio asignado disponible.
-3. Validar que la hora de salida sea posterior que la de entrada.
+1. Validate the license plate format as ABC-123 and ABC-12D.
+2. Validate that the assigned space is available.
+3. Ensure that the exit time is later than the entry time.
 
-## Interfaz 💻
+## Interface 💻
 
-De momento la interfaz únicamente será de vista de escritorio.
+For now, the interface will only be designed for desktop view.
 
-## Almacenamiento de Datos 📩
+## Data persistance 📩
 
-Se utilizará el localStorage para la persistencia de estos.
+LocalStorage will be used for data persistence.
 
-## Contacto
+## Contact
 
-Cualquier duda, inquietud y sugerencia será debidamente atendida y recibida atraves de los siguientes canales
+Any questions, concerns, or suggestions will be properly addressed and received through the following channels:
 
-Correo Electrónico: dxniel7328@gmail.com
+Email: dxniel7328@gmail.com
 
 Cel: +57 3173109599
