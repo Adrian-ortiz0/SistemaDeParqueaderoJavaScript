@@ -108,6 +108,7 @@ function cargarMembersDelLocalStorage() {
 //FUNCIONES
 
 let placasDeMiembros = []
+// let slotsPaired = []
 
 function extraccionDePlacas(){
     cargarMembersDelLocalStorage()
@@ -116,7 +117,19 @@ function extraccionDePlacas(){
     }) 
 }
 
+// function extraccionDeSlots(){
+//     cargarMembersDelLocalStorage()
+//     members.forEach(function(member){
+//         pair = {
+//             plate: member.plate,
+//             slot: member.slot
+//         }
+//         slotsPaired.push(pair)
+//     }) 
+// }
+
 extraccionDePlacas()
+
 console.log(placasDeMiembros)
 
 const registerEntranceBtn = document.getElementById("registerEntranceBtn");
