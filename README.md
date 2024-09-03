@@ -2,7 +2,7 @@
 # Wayne Enterprises Parking App
 
 ## FUNCIONALIDADES 📏
-=======
+
 | Índice | Titulo          |
 | ------ | --------------- |
 | 1      | Instalación     |
@@ -62,7 +62,7 @@ El botón entrance permitirá registrar a los vehículos que van entrando al par
 
 El siguiente botón el cual esta señalado en la imagen, redireccionará al administrador a la pagina encargada de mostrar los vehículos que actualmente están en el parqueadero.
 
-![ssList](\images\ssList.PNG)
+![ssList](images\ssList.PNG)
 
 ### Slots
 
