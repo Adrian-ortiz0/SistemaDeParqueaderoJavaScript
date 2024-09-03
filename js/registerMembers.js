@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     window.addEventListener('click', (event) => {
-        if (!event.target.matches('.dropdown-button')) {
+        if (!event.target.matches('#dropdownButton') && !event.target.matches('#dropdownContent') && !event.target.matches('#dropdownContent a')) {
             if (dropdownContent.style.display === 'block') {
                 dropdownContent.style.display = 'none';
             }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     window.addEventListener('click', (event) => {
-        if (!event.target.matches('.dropdown-button')) {
+        if (!event.target.matches('#dropdownButtonMonth') && !event.target.matches('#dropdownContentMonth') && !event.target.matches('#dropdownContentMonth a')) {
             if (dropdownContentMonth.style.display === 'block') {
                 dropdownContentMonth.style.display = 'none';
             }
@@ -81,6 +81,21 @@ function obtenerSlotsDesdeLocalStorage() {
     return slotsData ? JSON.parse(slotsData) : [];
 }
 
+function guardarVehiculosEnLocalStorage() {
+    localStorage.setItem("vehicles", JSON.stringify(vehicles));
+    guardarSlotsEnLocalStorage();
+}
+
+function cargarVehiculosDelLocalStorage() {
+    const vehiclesString = localStorage.getItem("vehicles");
+    if (vehiclesString) {
+        vehicles = JSON.parse(vehiclesString);
+    } else {
+        vehicles = [];
+    }
+    slots = obtenerSlotsDesdeLocalStorage();
+}
+
 //--------------------------------------------------------------------------------------------------------------//
 
 //LLAMADOS DE VARIABLES
@@ -89,8 +104,6 @@ const nameInputMember = document.getElementById("nameInputMember");
 const memberPlateInput = document.getElementById("plateInputMember");
 const modelInputMember = document.getElementById("modelInputMember");
 const memberSlotInput = document.getElementById("slotInputMember");
-const dropdownButton = document.getElementById("dropdownButton").innerText;
-const dropdownButtonMonth = document.getElementById("dropdownButtonMonth").innerText;
 const registerMemberBtn = document.getElementById("registerMemberBtn");
 
 //--------------------------------------------------------------------------------------------------------------//
@@ -115,11 +128,16 @@ registerMemberBtn.addEventListener("click", function(){
 function registrarMiembros() {
     cargarMembersDelLocalStorage();
 
-    if (!nameInputMember.value || !memberPlateInput.value || !modelInputMember.value || !memberSlotInput.value || !dropdownButton || !dropdownButtonMonth) {
+    const dropdownButton = document.getElementById('dropdownButton').textContent;
+    const dropdownButtonMonth = document.getElementById('dropdownButtonMonth').textContent;
+
+    if (!nameInputMember.value || !memberPlateInput.value || !modelInputMember.value || !memberSlotInput.value || dropdownButton === 'Select Type' || dropdownButtonMonth === 'Select Months') {
         return alert("Debes rellenar todos los campos");
     }
 
-    if (!expresionRegularVehiculo.test(memberPlateInput.value)) {
+    const placaMayuscula = memberPlateInput.value.toUpperCase();
+
+    if (!expresionRegularVehiculo.test(placaMayuscula)) {
         return alert("Placa escrita en el formato incorrecto! (ABC123)");
     }
 
@@ -136,37 +154,50 @@ function registrarMiembros() {
         return alert("El slot ya ha sido ocupado!");
     }
 
-    const placaExistente = vehicles.find(vehicle => vehicle.plate === memberPlateInput.value);
+    const placaExistente = vehicles.find(vehicle => vehicle.plate === placaMayuscula);
     if (placaExistente) {
         return alert("La placa ya ha sido registrada!");
     }
 
-    let price;
+    let monthPrice;
     switch (dropdownButton) {
         case 'Carro':
-            price = 3000;
+            monthPrice = 40000;
             break;
         case 'Moto':
-            price = 1000;
+            monthPrice = 20000;
             break;
         case 'Camión':
-            price = 6000;
+            monthPrice = 100000;
             break;
         default:
-            price = 0;
+            monthPrice = 0;
     }
 
-    const monthsSelected = parseInt(dropdownButtonMonth);
-    const totalCost = price * monthsSelected;
+    let totalCostMonths;
+    switch (parseInt(dropdownButtonMonth)) {
+        case 3:
+            totalCostMonths = monthPrice * 3;
+            break;
+        case 6:
+            totalCostMonths = monthPrice * 6;
+            break;
+        case 12:
+            totalCostMonths = monthPrice * 12;
+            break;
+        default:
+            totalCostMonths = 0;
+            break;
+    }
 
     const newMember = {
         name: nameInputMember.value,
-        plate: memberPlateInput.value,
+        plate: placaMayuscula, 
         model: modelInputMember.value,
         slot: memberSlotInput.value,
         vehicle_type: dropdownButton,
         months_selected: dropdownButtonMonth,
-        total_cost: totalCost
+        total_cost: totalCostMonths
     };
 
     members.push(newMember);
@@ -177,6 +208,6 @@ function registrarMiembros() {
     memberPlateInput.value = '';
     modelInputMember.value = '';
     memberSlotInput.value = '';
-    document.getElementById('dropdownButton').innerText = 'Select Type';
-    document.getElementById('dropdownButtonMonth').innerText = 'Select Months';
+    document.getElementById('dropdownButton').textContent = 'Select Type';
+    document.getElementById('dropdownButtonMonth').textContent = 'Select Months';
 }

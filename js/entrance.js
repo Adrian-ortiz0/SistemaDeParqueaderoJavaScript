@@ -48,6 +48,7 @@ function actualizarHoraActual() {
 
 let vehicles = []
 let slots = []
+let members = []
 
 //---------------------------------------------------------------------------------------------------------------------//
 
@@ -86,13 +87,43 @@ function obtenerSlotsDesdeLocalStorage() {
     }
 }
 
+function guardarMembersEnLocalStorage() {
+    localStorage.setItem("members", JSON.stringify(members));
+    guardarSlotsEnLocalStorage();
+}
+
+function cargarMembersDelLocalStorage() {
+    const membersString = localStorage.getItem("members");
+    if (membersString) {
+        members = JSON.parse(membersString);
+    } else {
+        members = [];
+    }
+}
+
+
+
 //---------------------------------------------------------------------------------------------------------------------//
+
+//FUNCIONES
+
+let placasDeMiembros = []
+
+function extraccionDePlacas(){
+    cargarMembersDelLocalStorage()
+    members.forEach(function(member){
+        placasDeMiembros.push(member.plate)
+    }) 
+}
+
+extraccionDePlacas()
+console.log(placasDeMiembros)
 
 const registerEntranceBtn = document.getElementById("registerEntranceBtn");
 
-registerEntranceBtn.addEventListener("click", function(){
-    registerEntranceVehicles()
-})
+registerEntranceBtn.addEventListener("click", function() {
+    registerEntranceVehicles();
+});
 
 function registerEntranceVehicles() {
     const plateInputEntrance = document.getElementById("plateInputEntrance");
@@ -106,18 +137,21 @@ function registerEntranceVehicles() {
     const expresionRegularHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
     const expresionRegularSlot = /^A([1-9]|[1-9]\d|50)$/;
 
+    const plate = plateInputEntrance.value.toUpperCase();
+    const slot = slotInputEntrance.value.toUpperCase();
+
     const vehicleType = dropdownButton.textContent === 'Select Type' ? '' : dropdownButton.textContent;
 
     if (
-        !plateInputEntrance.value ||
+        !plate ||
         !modelInputEntrance.value ||
         !hourInputEntrance.value ||
-        !slotInputEntrance.value ||
+        !slot ||
         !vehicleType
     ) {
         return alert("Rellena todos los campos!");
     }
-    if (!expresionRegularVehiculo.test(plateInputEntrance.value)) {
+    if (!expresionRegularVehiculo.test(plate)) {
         return alert("Placa escrita en el formato incorrecto! (ABC123)");
     }
     if (!expresionRegularHora.test(hourInputEntrance.value)) {
@@ -126,11 +160,11 @@ function registerEntranceVehicles() {
     if (hourInputEntrance.value !== horaActual) {
         return alert("La hora no coincide con la hora actual!");
     }
-    if (!expresionRegularSlot.test(slotInputEntrance.value)) {
+    if (!expresionRegularSlot.test(slot)) {
         return alert("El slot está escrito en un formato incorrecto! (A1-A50)");
     }
 
-    const slotDisponible = slots.find(slot => slot.name === slotInputEntrance.value);
+    const slotDisponible = slots.find(slotItem => slotItem.name === slot);
 
     if (!slotDisponible) {
         return alert("El slot no existe!");
@@ -139,9 +173,19 @@ function registerEntranceVehicles() {
         return alert("El slot ya ha sido ocupado!");
     }
 
-    const placaExistente = vehicles.find(vehicle => vehicle.plate === plateInputEntrance.value);
+    const placaExistente = vehicles.find(vehicle => vehicle.plate === plate);
     if (placaExistente) {
         return alert("La placa ya ha sido registrada!");
+    }
+
+    let isMember;
+    if(placasDeMiembros.includes(plate)){
+        console.log("Es miembro")
+        isMember = true;
+
+    } else {
+        console.log("No es miembro!")
+        isMember = false
     }
 
     let price;
@@ -159,20 +203,37 @@ function registerEntranceVehicles() {
             price = 0;
     }
 
-    const newVehicle = {
-        plate: plateInputEntrance.value,
-        model: modelInputEntrance.value,
-        entrance_hour: hourInputEntrance.value,
-        slot: slotInputEntrance.value,
-        exit_hour: "",
-        price: price,
-        type: vehicleType,
-        total_cost: 0,
-        member: false
-    };
+    if (isMember) {
+        const newVehicleMember = {
+            plate: plate,
+            model: modelInputEntrance.value,
+            entrance_hour: hourInputEntrance.value,
+            slot: slot,
+            exit_hour: "",
+            price: 0,
+            type: vehicleType,
+            total_cost: 0,
+            member: isMember
+        };
 
-    vehicles.push(newVehicle);
-    slotDisponible.available = false;
+        vehicles.push(newVehicleMember);
+        slotDisponible.available = false
+    } else {
+        const newVehicle = {
+            plate: plate,
+            model: modelInputEntrance.value,
+            entrance_hour: hourInputEntrance.value,
+            slot: slot,
+            exit_hour: "",
+            price: price,
+            type: vehicleType,
+            total_cost: 0,
+            member: isMember
+        };
+    
+        vehicles.push(newVehicle);
+        slotDisponible.available = false;
+    }
 
     guardarVehiculosEnLocalStorage();
 

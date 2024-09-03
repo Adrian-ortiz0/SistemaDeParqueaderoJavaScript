@@ -33,6 +33,12 @@ function traerVehiculos() {
     informationModuleContainer.innerHTML = '';
 
     vehicles.forEach(function(vehiculo, index) {
+        let isMember;
+        if (vehiculo.member === true) {
+            isMember = "Yes"
+        } else {
+            isMember = "No"
+        }
         const informationModule = document.createElement("div");
         informationModule.classList.add("informationModule");
 
@@ -50,7 +56,7 @@ function traerVehiculos() {
                 <h3>${vehiculo.slot}</h3>
             </div>
             <div class="defaultVehiclesSlots">
-                <h3>${vehiculo.member}</h3>
+                <h3>${isMember}</h3>
             </div>
         `;
 

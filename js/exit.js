@@ -94,17 +94,19 @@ registerExitBtn.addEventListener("click", registerExit);
 
 function registerExit() {
     const expresionRegularHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
-    const expresionRegularVehiculo = /^[A-Za-z]{3}\d{3}$/;
+    const expresionRegularVehiculo = /^[A-Z]{3}\d{3}$/;
 
-    if (plateInputExit.value === "" || hourInputExit.value === "") {
+    const placa = plateInputExit.value.toUpperCase();
+
+    if (placa === "" || hourInputExit.value === "") {
         return alert("Rellena todos los campos!");
     }
 
-    if (!expresionRegularVehiculo.test(plateInputExit.value)) {
+    if (!expresionRegularVehiculo.test(placa)) {
         return alert("Placa escrita en el formato incorrecto! (ABC123)");
     }
 
-    const vehiculoSaliendo = vehicles.find(vehicle => vehicle.plate === plateInputExit.value);
+    const vehiculoSaliendo = vehicles.find(vehicle => vehicle.plate === placa);
     if (!vehiculoSaliendo) {
         return alert("El vehículo con esta placa no se encontró.");
     }
@@ -140,12 +142,14 @@ function registerExit() {
 }
 
 function finalizarSalida() {
-    const vehiculoSaliendo = vehicles.find(vehicle => vehicle.plate === plateInputExit.value);
+    const placa = plateInputExit.value.toUpperCase();
+
+    const vehiculoSaliendo = vehicles.find(vehicle => vehicle.plate === placa);
     if (!vehiculoSaliendo) {
         return alert("Error: No se encontró el vehículo.");
     }
 
-    vehicles = vehicles.filter(vehicle => vehicle.plate !== plateInputExit.value);
+    vehicles = vehicles.filter(vehicle => vehicle.plate !== placa);
     
     const slotLiberado = slots.find(slot => slot.name === vehiculoSaliendo.slot);
     if (slotLiberado) {
@@ -159,7 +163,6 @@ function finalizarSalida() {
     hourInputExit.value = "";
     exitCost.innerText = "";
 
-    console.log("Vehículo eliminado y slot actualizado.");
 }
 
 function convertToMinutes(time) {
