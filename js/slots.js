@@ -1,6 +1,16 @@
+
 function obtenerSlotsDesdeLocalStorage() {
     const slotsData = localStorage.getItem('slots');
-    return slotsData ? JSON.parse(slotsData) : [];
+    if (slotsData) {
+        return JSON.parse(slotsData);
+    } else {
+        const initialSlots = Array.from({length: 50}, (_, i) => ({
+            name: `A${i + 1}`,
+            available: true
+        }));
+        localStorage.setItem('slots', JSON.stringify(initialSlots));
+        return initialSlots;
+    }
 }
 
 function traerSlots() {

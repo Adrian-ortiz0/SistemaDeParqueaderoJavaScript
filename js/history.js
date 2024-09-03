@@ -60,7 +60,7 @@ function mostrarHistorial() {
                 <h3>${vehicle.plate}</h3>
             </div>
             <div class="defaultVehiclesSlots">
-                <h3>${vehicle.model}</h3>
+                <h3>${vehicle.type}</h3>
             </div>
             <div class="defaultVehiclesSlots">
                 <h3>${vehicle.slot}</h3>

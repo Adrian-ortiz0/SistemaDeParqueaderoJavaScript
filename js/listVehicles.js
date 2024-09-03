@@ -50,7 +50,7 @@ function traerVehiculos() {
                 <h3>${vehiculo.plate}</h3>
             </div>
             <div class="defaultVehiclesSlots">
-                <h3>${vehiculo.model}</h3>
+                <h3>${vehiculo.type}</h3>
             </div>
             <div class="defaultVehiclesSlots">
                 <h3>${vehiculo.slot}</h3>

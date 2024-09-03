@@ -190,6 +190,11 @@ function registrarMiembros() {
             break;
     }
 
+    const currentDate = new Date();
+
+    const exitDate = new Date(currentDate);
+    exitDate.setMonth(currentDate.getMonth() + parseInt(dropdownButtonMonth));
+
     const newMember = {
         name: nameInputMember.value,
         plate: placaMayuscula, 
@@ -197,7 +202,9 @@ function registrarMiembros() {
         slot: memberSlotInput.value,
         vehicle_type: dropdownButton,
         months_selected: dropdownButtonMonth,
-        total_cost: totalCostMonths
+        total_cost: totalCostMonths,
+        registration_date: currentDate.toLocaleDateString(),
+        exit_date: exitDate.toLocaleDateString()
     };
 
     members.push(newMember);
