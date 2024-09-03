@@ -1,4 +1,6 @@
-# FUNCIONALIDADES 📏
+#Wayne Enterprises Parking App
+
+## FUNCIONALIDADES 📏
 
 1. Registrar entrada de vehículos: placa, tipo, hora de entrada y espacio ocupado por el vehículo.
 2. Mostrar una lista de todos los vehículos dentro del parqueadero.
