@@ -38,7 +38,7 @@ Para poder dar inicio al software de parqueadero, lo primero que se debe hacer e
 
 Al abrir el software, lo primero que se verá es una pagina de inicio de sesión.
 
-![ssLogin](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssLogin.PNG)
+![ssLogin](\images\ssLogin.PNG)
 
 Para poder ingresar deberá digitarse bruce@wayne.com en la sección email, y la contraseña es "123456"
 
@@ -46,44 +46,43 @@ Para poder ingresar deberá digitarse bruce@wayne.com en la sección email, y la
 
 Luego apareceremos en la sección de Home, en la cual se podrá observar esta interfaz
 
-![ssHome](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssHome.PNG)
+![ssHome](\images\ssHome.PNG)
 
 El botón entrance permitirá registrar a los vehículos que van entrando al parqueadero y el botón de exit permitirá registrar la salida de los vehículos que abandonan el establecimiento luego de cierto periodo de tiempo.
 
 #### Entrance
 
-![ssEntrance](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssEntrance.PNG)
+![ssEntrance](\images\ssEntrance.PNG)
 
 #### Exit
 
-![ssExit](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssExit.PNG)
+![ssExit](\images\ssExit.PNG)
 
 ### Lista de vehículos
 
 El siguiente botón el cual esta señalado en la imagen, redireccionará al administrador a la pagina encargada de mostrar los vehículos que actualmente están en el parqueadero.
 
-![ssList](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssList.PNG)
+![ssList](\images\ssList.PNG)
 
 ### Slots
 
 El siguiente botón, el cual también esta señalado en la imagen, redirige al administrador a un apartado el cual le permitirá revisar de forma visual los slots que están disponibles y los que no.
 
-![ssSlots](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssSlots.PNG)
+![ssSlots](\images\ssSlots.PNG)
 
 ### History
 
 El siguiente botón, muestra al administrados el historial total de todos los autos que han entrado y salido.
 
-![ssHistory](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssHistory.PNG)
+![ssHistory](\images\ssHistory.PNG)
 
 ### Members
 
 El botón de members da las opciones de registrar miembros y de verlos.
 
-![ssMembers](C:\Users\Danie\Desktop\Proyecto_JavaScript_Ustariz_Adrian\images\ssMembers.PNG)
+![ssMembers](\images\ssMembers.PNG)
 
 ## Funcionalidades 📏
->>>>>>> 41ab3e9 (feat: :art: Decoration of READme)
 
 1. Registrar entrada de vehículos: placa, tipo, hora de entrada y espacio ocupado por el vehículo.
 2. Mostrar una lista de todos los vehículos dentro del parqueadero.
