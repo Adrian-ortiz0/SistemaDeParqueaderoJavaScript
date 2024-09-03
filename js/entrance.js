@@ -109,6 +109,7 @@ function cargarMembersDelLocalStorage() {
 
 let placasDeMiembros = []
 
+
 function extraccionDePlacas(){
     cargarMembersDelLocalStorage()
     members.forEach(function(member){
@@ -191,13 +192,13 @@ function registerEntranceVehicles() {
 
     let price;
     switch (vehicleType) {
-        case 'Carro':
+        case 'Car':
             price = 3000;
             break;
-        case 'Moto':
+        case 'Motorbike':
             price = 1000;
             break;
-        case 'Camión':
+        case 'Truck':
             price = 6000;
             break;
         default:
@@ -205,20 +206,7 @@ function registerEntranceVehicles() {
     }
 
     if (isMember) {
-        const newVehicleMember = {
-            plate: plate,
-            model: modelInputEntrance.value,
-            entrance_hour: hourInputEntrance.value,
-            slot: slot,
-            exit_hour: "",
-            price: 0,
-            type: vehicleType,
-            total_cost: 0,
-            member: isMember
-        };
-
-        vehicles.push(newVehicleMember);
-        slotDisponible.available = false
+        alert("Esta placa es de un miembro, favor validar su entrada de forma especial")
     } else {
         const newVehicle = {
             plate: plate,
@@ -234,18 +222,18 @@ function registerEntranceVehicles() {
     
         vehicles.push(newVehicle);
         slotDisponible.available = false;
+        guardarVehiculosEnLocalStorage();
+    
+        alert("Entrada registrada exitosamente");
+        console.log(vehicles);
+    
+        plateInputEntrance.value = '';
+        modelInputEntrance.value = '';
+        hourInputEntrance.value = '';
+        slotInputEntrance.value = '';
+        dropdownButton.textContent = 'Select Type';
     }
 
-    guardarVehiculosEnLocalStorage();
-
-    alert("Entrada registrada exitosamente");
-    console.log(vehicles);
-
-    plateInputEntrance.value = '';
-    modelInputEntrance.value = '';
-    hourInputEntrance.value = '';
-    slotInputEntrance.value = '';
-    dropdownButton.textContent = 'Select Type';
 }
 
 window.addEventListener('beforeunload', () => {
