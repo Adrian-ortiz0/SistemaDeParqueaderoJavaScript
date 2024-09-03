@@ -1,9 +1,7 @@
-<<<<<<< HEAD
+
 # Wayne Enterprises Parking App
 
 ## FUNCIONALIDADES 📏
-||||||| parent of 41ab3e9 (feat: :art: Decoration of READme)
-# FUNCIONALIDADES 📏
 =======
 | Índice | Titulo          |
 | ------ | --------------- |
@@ -111,11 +109,6 @@ De momento la interfaz únicamente será de vista de escritorio.
 
 ## Almacenamiento de Datos 📩
 
-<<<<<<< HEAD
-Se utilizará mockAPI para la persistencia de estos.
-||||||| parent of 41ab3e9 (feat: :art: Decoration of READme)
-Se utilizará mockAPI para la persistencia de estos.
-=======
 Se utilizará el localStorage para la persistencia de estos.
 
 ## Contacto
@@ -125,4 +118,3 @@ Cualquier duda, inquietud y sugerencia será debidamente atendida y recibida atr
 Correo Electrónico: dxniel7328@gmail.com
 
 Cel: +57 3173109599
->>>>>>> 41ab3e9 (feat: :art: Decoration of READme)
