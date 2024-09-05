@@ -176,6 +176,18 @@ body{
     height: 250px;
     border-radius: 15px;
 }
+.deleteBtn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    background-color: #b6b6b64a;
+    border-radius: 10px;
+}
+
+.deleteBtn:hover{
+    background-color: #ababab;
+}
 .section2Buttons:hover{
     background-color: #3d3d3da1;
 }

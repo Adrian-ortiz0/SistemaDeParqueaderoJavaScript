@@ -44,6 +44,12 @@ function actualizarHistorial() {
     }
 }
 
+function eliminarEntrada(index) {
+    historial.splice(index, 1);
+    guardarHistorial();
+    mostrarHistorial();
+}
+
 function mostrarHistorial() {
     const informationModuleContainerHistory = document.getElementById("informationModuleContainerHistory");
     informationModuleContainerHistory.innerHTML = '';
@@ -70,6 +76,9 @@ function mostrarHistorial() {
             </div>
             <div class="defaultVehiclesSlots">
                 <h3>${vehicle.salida || 'Parking'}</h3>
+            </div>
+            <div class="defaultVehiclesSlots">
+                <button class="deleteBtn" onclick="eliminarEntrada(${index})">Eliminar</button>
             </div>`;
 
         informationModuleContainerHistory.appendChild(informationModuleHistory);
@@ -82,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarHistorial();
 });
 
-// Actualizar y mostrar el historial cada minuto
 setInterval(() => {
     actualizarHistorial();
     mostrarHistorial();
