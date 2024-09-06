@@ -510,7 +510,6 @@ body{
     }
 }
 
-/* Estilo normal para pantallas más grandes */
 @media only screen and (min-width: 1000px) {
     .mobileMessage {
         display: none;
