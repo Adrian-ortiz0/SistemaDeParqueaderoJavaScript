@@ -63,7 +63,7 @@ body{
 
 .homeMain{
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 .asideHome {
@@ -78,7 +78,6 @@ body{
     font-family: wayneLetra;
     border-radius: 10px;
     padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .asideHome div {
@@ -123,6 +122,7 @@ body{
 }
 .bigSection{
     width: 80%;
+    height: 100%;
 }
 
 .homeSection1{
@@ -136,10 +136,10 @@ body{
     font-family: wayneLetra;
     letter-spacing: 5px;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .homeSection1 h1{
-    margin-left: 250px;
 }
 
 .homeSection2{
@@ -156,6 +156,7 @@ body{
     align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .homeButtons{
     background-color: transparent;
@@ -492,3 +493,26 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+@media only screen and (max-width: 1000px) {
+    body * {
+        display: none;
+    }
+    .asideHome{
+        display: none;
+    }
+    .mobileMessage {
+        display: block;
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        margin-top: 40%;
+        width: 100%;
+    }
+}
+
+/* Estilo normal para pantallas más grandes */
+@media only screen and (min-width: 1000px) {
+    .mobileMessage {
+        display: none;
+    }
+}
